@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# docs-clone
+
+A clone of Google Docs — a real-time collaborative document editor with rich text editing, formatting, and sharing, all in the browser.
+
+## Goal
+
+- Rich text editor (headings, lists, bold/italic/underline, links, images, tables)
+- Real-time collaboration (multiple users editing the same document simultaneously)
+- Document dashboard (create, rename, delete, and search documents)
+- Auto-save and version history
+- Comments and suggestions
+- Sharing and permissions (view, comment, edit)
+- Export (PDF, DOCX) and a print-friendly view
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org) 15.0.3 (App Router) + React 19 RC
+- TypeScript 5
+- Tailwind CSS 3.4 + `tailwindcss-animate`
+- [shadcn/ui](https://ui.shadcn.com) components (Radix UI + CVA)
+- `react-hook-form` + `zod` (forms/validation)
+- `recharts` (charts), `lucide-react` (icons)
+
+> Planned but not installed yet: Tiptap/ProseMirror for the editor, Yjs/crDB for real-time collaboration, and Prisma/Supabase for the database.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Create a production build |
+| `npm run start` | Serve the production build |
+| `npm run lint` | Run ESLint |
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── layout.tsx      # Root layout (Geist fonts)
+│   ├── page.tsx        # Home page (currently just a demo button)
+│   └── globals.css     # Tailwind + shadcn theme variables
+├── components/
+│   └── ui/             # ~50 shadcn/ui components
+├── hooks/
+│   └── use-toast.ts    # Toast hook
+└── lib/
+    └── utils.ts        # cn() helper
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Progress — What Has Been Done So Far
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Done:**
+- [x] Next.js + TypeScript project setup (create-next-app)
+- [x] shadcn/ui setup — ~50 components (button, dialog, dropdown, toolbar-ready pieces, etc.)
+- [x] Tailwind theme and design tokens
+- [x] Basic README and project structure
 
-## Deploy on Vercel
+**Not done yet (the actual clone has not been started):**
+- [ ] Rich text editor (Tiptap/ProseMirror)
+- [ ] Editor toolbar (formatting controls)
+- [ ] Document dashboard (document list, create/rename/delete)
+- [ ] Database and auth (document ownership)
+- [ ] Auto-save
+- [ ] Real-time collaboration
+- [ ] Comments and sharing permissions
+- [ ] Version history and export
+- [ ] Tests and CI
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Status: ~5% done** — only the base UI setup is ready; nothing Google Docs-like renders yet. Next step is building the editor core.
